@@ -14,5 +14,7 @@ public class PegaApropriaArquivosDisponiveis {
 		//arquivo exportacaoSM já deve estar disponível
 		util.atualizaListaSM(persistidor);
 		
+		//comentario para teste do github
+		
 	}
 }
