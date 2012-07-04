@@ -1,0 +1,28 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+
+    <persistence-unit name="gestaoDE723.entidades">
+        <description>
+            Arquivo configuracao persistencia entidades sistema de gestao de recursos
+        </description>
+
+        
+        <class>entidades.ApropriacaoDia</class>
+        <class>entidades.SolicitacaoMudanca</class>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.gjt.mm.mysql.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/log" />
+            <property name="javax.persistence.jdbc.user" value="root" />
+            <property name="javax.persistence.jdbc.password" value="tvevdd" />
+
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+            
+        </properties>
+
+    </persistence-unit>
+
+</persistence>
