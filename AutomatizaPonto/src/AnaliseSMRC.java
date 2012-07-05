@@ -9,6 +9,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import utilitarios.UtilGestaoUnidade;
+
 import com.thoughtworks.selenium.DefaultSelenium;
 import com.thoughtworks.selenium.SeleneseTestCase;
 import com.thoughtworks.selenium.Selenium;
@@ -35,8 +37,7 @@ public class AnaliseSMRC extends SeleneseTestCase {
 	@Before
 	public void setUp() throws Exception {
 		
-//		selenium = new DefaultSelenium("localhost", 4444, "*custom /home/01553360702/Documentos/Util/firefox/firefox", "https://sgi.portalcorporativo.serpro/");
-//		selenium.start();
+
 		
 		UtilGestaoUnidade.getInstanciaUtilitario();
 		selenium = UtilGestaoUnidade.getInstanciaSeleniumSGI();

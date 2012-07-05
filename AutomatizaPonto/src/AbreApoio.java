@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 
+import utilitarios.UtilGestaoUnidade;
+
 public class AbreApoio {
 	
 	public static WebDriver driver;
@@ -14,11 +16,12 @@ public class AbreApoio {
 
 	
 	public static void main(String[] args) {
+		
 	    FirefoxProfile firefoxProfile = new FirefoxProfile();
 
 	    firefoxProfile.setPreference("browser.download.folderList",2);
 	    firefoxProfile.setPreference("browser.download.manager.showWhenStarting",false);
-	    firefoxProfile.setPreference("browser.download.dir","/home/01553360702/apoio/arquivosdia");
+	    firefoxProfile.setPreference("browser.download.dir",UtilGestaoUnidade.getInstanciaUtilitario().getHome() + "/apoio/arquivosdia");
 	    firefoxProfile.setPreference("browser.helperApps.neverAsk.saveToDisk","text/text");
 
 	    System.out.println("Iniciando log no Apoio");
@@ -29,9 +32,9 @@ public class AbreApoio {
 		driver.get(baseUrl + "/");
 		driver.findElement(By.linkText("Intranet e Internet - LPAR K")).click();
 		driver.findElement(By.name("cpfTemp")).clear();
-		driver.findElement(By.name("cpfTemp")).sendKeys("01553360702");
+		driver.findElement(By.name("cpfTemp")).sendKeys(UtilGestaoUnidade.getInstanciaUtilitario().getUsuario());
 		driver.findElement(By.name("senhaTemp")).clear();
-		driver.findElement(By.name("senhaTemp")).sendKeys("01osrevdm");
+		driver.findElement(By.name("senhaTemp")).sendKeys(UtilGestaoUnidade.getInstanciaUtilitario().getPassUsuario());
 		driver.findElement(By.name("Image7")).click();
 		driver.get("https://www4.receita.fazenda/ApoioWAS/ListFiles?dirName=%2Flog%2Fwas6-prd%2FKPCELL.KPNODE.KPS40K");
 

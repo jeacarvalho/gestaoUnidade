@@ -17,6 +17,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
+import utilitarios.UtilGestaoUnidade;
+
 public class PegaPontoWebDriver {
 	private WebDriver driver;
 	private String baseUrl="";
@@ -36,9 +38,9 @@ public class PegaPontoWebDriver {
 		String urlSiscop = "http://siscop.portalcorporativo.serpro/";
 		driver.get(urlSiscop);
 		driver.findElement(By.name("tx_cpf")).clear();
-		driver.findElement(By.name("tx_cpf")).sendKeys("01553360702");
+		driver.findElement(By.name("tx_cpf")).sendKeys(UtilGestaoUnidade.getInstanciaUtilitario().getUsuario());
 		driver.findElement(By.name("tx_senha")).clear();
-		driver.findElement(By.name("tx_senha")).sendKeys("10osrevdm");
+		driver.findElement(By.name("tx_senha")).sendKeys(UtilGestaoUnidade.getInstanciaUtilitario().getPassUsuario());
 		driver.findElement(By.name("BotaoOk")).click();
 		
 		GregorianCalendar calendar = new GregorianCalendar();  

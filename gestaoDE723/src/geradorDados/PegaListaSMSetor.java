@@ -8,6 +8,8 @@ import java.io.IOException;
 
 import org.junit.Test;
 
+import utilitarios.UtilGestaoUnidade;
+
 import entidades.SolicitacaoMudanca;
 
 public class PegaListaSMSetor {
@@ -17,7 +19,7 @@ public class PegaListaSMSetor {
 	public void testAtualizaListaSM(){
 		String linhaEmProcessamento;
 		try {
-			File e = new File("/home/01553360702/Documentos/Downloads/exportacaoSM.txt");
+			File e = new File(UtilGestaoUnidade.getInstanciaUtilitario().getHome() + "/Documentos/Downloads/exportacaoSM.txt");
 			BufferedReader in = new BufferedReader(new FileReader(e));
 			in.readLine(); //despreza primeira linha com cabeçalho, sempre gerado pelo SGI
 			GerenciadorPersistencia persistidor = new GerenciadorPersistencia();

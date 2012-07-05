@@ -11,6 +11,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
+import utilitarios.UtilGestaoUnidade;
+
 public class AnaliseSMWebDriver {
 	private WebDriver driver;
 	private String baseUrl="";
@@ -25,9 +27,9 @@ public class AnaliseSMWebDriver {
 	public void testAnaliseSMWebDriver() throws Exception {
 		driver.get("https://sgi.portalcorporativo.serpro/");
 		driver.findElement(By.id("tbUserId")).clear();
-		driver.findElement(By.id("tbUserId")).sendKeys("01553360702");
+		driver.findElement(By.id("tbUserId")).sendKeys(UtilGestaoUnidade.getInstanciaUtilitario().getUsuario());
 		driver.findElement(By.id("tbSenha")).clear();
-		driver.findElement(By.id("tbSenha")).sendKeys("02osrevdm");
+		driver.findElement(By.id("tbSenha")).sendKeys(UtilGestaoUnidade.getInstanciaUtilitario().getPassUsuario());
 		driver.findElement(By.id("btnAvancar")).click();
 		driver.switchTo().frame(driver.findElements(By.xpath("//*[@id=\"menu\"]")).get(0)); 
 		driver.findElement(By.linkText("Solicita")).click();

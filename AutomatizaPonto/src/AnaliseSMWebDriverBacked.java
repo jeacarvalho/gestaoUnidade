@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriverBackedSelenium;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 
+import utilitarios.UtilGestaoUnidade;
+
 import com.thoughtworks.selenium.SeleneseTestCase;
 import com.thoughtworks.selenium.Selenium;
 
@@ -19,7 +21,7 @@ public class AnaliseSMWebDriverBacked extends SeleneseTestCase {
 
 	    firefoxProfile.setPreference("browser.download.folderList",2);
 	    firefoxProfile.setPreference("browser.download.manager.showWhenStarting",false);
-	    firefoxProfile.setPreference("browser.download.dir","/home/01553360702/apoio/arquivosdia");
+	    firefoxProfile.setPreference("browser.download.dir",UtilGestaoUnidade.getInstanciaUtilitario().getHome() + "/apoio/arquivosdia");
 	    firefoxProfile.setPreference("browser.helperApps.neverAsk.saveToDisk","text/text");
 		
 		
@@ -33,8 +35,8 @@ public class AnaliseSMWebDriverBacked extends SeleneseTestCase {
 	@Test
 	public void testAnaliseSMWebDriverBacked() throws Exception {
 		selenium.open("/");
-		selenium.type("id=tbUserId", "01553360702");
-		selenium.type("id=tbSenha", "01osrevdm");
+		selenium.type("id=tbUserId", UtilGestaoUnidade.getInstanciaUtilitario().getUsuario());
+		selenium.type("id=tbSenha", UtilGestaoUnidade.getInstanciaUtilitario().getPassUsuario());
 		selenium.click("id=btnAvancar");
 		selenium.waitForPageToLoad("30000");
 		selenium.selectFrame("menu");

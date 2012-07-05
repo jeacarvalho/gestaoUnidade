@@ -9,6 +9,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import utilitarios.UtilGestaoUnidade;
+
 import entidades.ApropriacaoDia;
 import entidades.SolicitacaoMudanca;
 
@@ -17,7 +19,7 @@ public class UtilitarioAnaliseApropriacao {
 	public void montaApropriacaoArquivo(GerenciadorPersistencia persistidor){
 		String linhaEmProcessamento;
 		try {
-			File e = new File("/home/01553360702/Documentos/Downloads/exportacao.txt");
+			File e = new File(UtilGestaoUnidade.getInstanciaUtilitario().getHome() + "/Documentos/Downloads/exportacao.txt");
 			BufferedReader in = new BufferedReader(new FileReader(e));
 			in.readLine(); //despreza primeira linha com cabeçalho, sempre gerado pelo SGI
 			
@@ -57,7 +59,7 @@ public class UtilitarioAnaliseApropriacao {
 	public void atualizaListaSM(GerenciadorPersistencia persistidor){
 		String linhaEmProcessamento;
 		try {
-			File e = new File("/home/01553360702/Documentos/Downloads/exportacaoSM.txt");
+			File e = new File(UtilGestaoUnidade.getInstanciaUtilitario().getHome() + "/Documentos/Downloads/exportacaoSM.txt");
 			BufferedReader in = new BufferedReader(new FileReader(e));
 			in.readLine(); //despreza primeira linha com cabeçalho, sempre gerado pelo SGI
 

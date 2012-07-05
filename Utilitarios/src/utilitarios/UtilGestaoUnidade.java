@@ -1,9 +1,8 @@
+package utilitarios;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
-import java.util.ResourceBundle;
 
 import com.thoughtworks.selenium.DefaultSelenium;
 import com.thoughtworks.selenium.Selenium;
@@ -14,13 +13,16 @@ public class UtilGestaoUnidade {
 	
 	static Properties props = new Properties();
 	
-	private String usuario;
-	private String passUsuario;
+
 	public String getUsuario() {
 		return props.getProperty("usuarioTeste");
 	}
 	public String getPassUsuario() {
 		return props.getProperty("passUsuarioTeste");
+	}
+
+	public String getHome() {
+		return props.getProperty("diretorioHome");
 	}
 	
 	private static UtilGestaoUnidade utilitario = null;

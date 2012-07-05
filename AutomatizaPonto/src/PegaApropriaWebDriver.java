@@ -7,6 +7,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import utilitarios.UtilGestaoUnidade;
+
 public class PegaApropriaWebDriver {
 	private WebDriver driver;
 	private String baseUrl="https://sgi.portalcorporativo.serpro";
@@ -21,9 +23,9 @@ public class PegaApropriaWebDriver {
 	public void testPegaApropriaWebDriver() throws Exception {
 		driver.get("https://sgi.portalcorporativo.serpro");
 		driver.findElement(By.id("tbUserId")).clear();
-		driver.findElement(By.id("tbUserId")).sendKeys("01553360702");
+		driver.findElement(By.id("tbUserId")).sendKeys(UtilGestaoUnidade.getInstanciaUtilitario().getUsuario());
 		driver.findElement(By.id("tbSenha")).clear();
-		driver.findElement(By.id("tbSenha")).sendKeys("04osrevdm");
+		driver.findElement(By.id("tbSenha")).sendKeys(UtilGestaoUnidade.getInstanciaUtilitario().getPassUsuario());
 		driver.findElement(By.id("btnAvancar")).click();
 		// ERROR: Caught exception [ERROR: Unsupported command [selectFrame]]
 		driver.switchTo().frame(driver.findElements(By.tagName("iframe")).get(0));

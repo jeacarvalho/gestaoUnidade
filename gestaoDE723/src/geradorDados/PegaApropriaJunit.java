@@ -1,24 +1,14 @@
 package geradorDados;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.firefox.FirefoxProfile;
 
+import utilitarios.UtilGestaoUnidade;
+
 import com.thoughtworks.selenium.DefaultSelenium;
 import com.thoughtworks.selenium.SeleneseTestCase;
 import com.thoughtworks.selenium.Selenium;
-
-import entidades.ApropriacaoDia;
-import entidades.SolicitacaoMudanca;
 
 public class PegaApropriaJunit extends SeleneseTestCase {
 	
@@ -29,11 +19,11 @@ public class PegaApropriaJunit extends SeleneseTestCase {
 
 	    firefoxProfile.setPreference("browser.download.folderList",2);
 	    firefoxProfile.setPreference("browser.download.manager.showWhenStarting",false);
-	    firefoxProfile.setPreference("browser.download.dir","/home/01553360702/apoio/arquivosdia");
+	    firefoxProfile.setPreference("browser.download.dir",UtilGestaoUnidade.getInstanciaUtilitario().getHome() + "/apoio/arquivosdia");
 	    firefoxProfile.setPreference("browser.helperApps.neverAsk.saveToDisk","text/text");
 		
 		
-		selenium = new DefaultSelenium("localhost", 4444, "*custom /home/01553360702/Documentos/Util/firefox/firefox", "https://sgi.portalcorporativo.serpro/");
+		selenium = new DefaultSelenium("localhost", 4444, "*custom " + UtilGestaoUnidade.getInstanciaUtilitario().getHome() + "/Documentos/Util/firefox/firefox", "https://sgi.portalcorporativo.serpro/");
 		selenium.start();
 
 		
@@ -43,8 +33,8 @@ public class PegaApropriaJunit extends SeleneseTestCase {
 	public void testPegaApropriaSGI() throws Exception {
 		selenium.open("/");
 		selenium.waitForPageToLoad("30000");
-		selenium.type("id=tbUserId", "01553360702");
-		selenium.type("id=tbSenha", "05osrevdm");
+		selenium.type("id=tbUserId", UtilGestaoUnidade.getInstanciaUtilitario().getUsuario());
+		selenium.type("id=tbSenha", UtilGestaoUnidade.getInstanciaUtilitario().getPassUsuario());
 		selenium.click("id=btnAvancar");
 		selenium.waitForPageToLoad("30000");
 		selenium.selectFrame("menu");

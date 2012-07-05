@@ -11,6 +11,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
+import utilitarios.UtilGestaoUnidade;
+
 import com.thoughtworks.selenium.DefaultSelenium;
 import com.thoughtworks.selenium.SeleneseTestCase;
 import com.thoughtworks.selenium.Selenium;
@@ -31,8 +33,8 @@ public class PegaPonto extends SeleneseTestCase {
 	public void testPegaPonto() throws Exception {
 		//loga
 		selenium.open("/");
-		selenium.type("name=tx_cpf", "01553360702");
-		selenium.type("name=tx_senha", "06osrevdm");
+		selenium.type("name=tx_cpf", UtilGestaoUnidade.getInstanciaUtilitario().getUsuario());
+		selenium.type("name=tx_senha", UtilGestaoUnidade.getInstanciaUtilitario().getPassUsuario());
 		selenium.click("name=BotaoOk");
 		selenium.waitForPageToLoad("30000");
 		
