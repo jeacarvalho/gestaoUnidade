@@ -12,7 +12,16 @@ import org.hibernate.annotations.GenericGenerator;
 public class ApropriacaoDia {
 	private String matricula;
 	private String nomeEmpregado;
+	private String projeto;
 	
+	public String getProjeto() {
+		return projeto;
+	}
+
+	public void setProjeto(String projeto) {
+		this.projeto = projeto;
+	}
+
 	public String getNomeEmpregado() {
 		return nomeEmpregado;
 	}
@@ -21,7 +30,7 @@ public class ApropriacaoDia {
 		this.nomeEmpregado = nomeEmpregado;
 	}
 	private String data;
-	private int horas;
+	private int minutos;
 	private String sm;
 	private String percentualConclusao;
 	
@@ -67,11 +76,11 @@ public class ApropriacaoDia {
 	public void setData(String data) {
 		this.data = data;
 	}
-	public int getHoras() {
-		return horas;
+	public int getMinutos() {
+		return minutos;
 	}
-	public void setHoras(int horas) {
-		this.horas = horas;
+	public void setMinutos(int horas) {
+		this.minutos = horas;
 	}
 	public String getSm() {
 		return sm;

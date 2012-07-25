@@ -41,7 +41,10 @@ public class PegaApropriaJunit extends SeleneseTestCase {
 		selenium.click("link=Extração");
 		selenium.selectFrame("relative=up");
 		selenium.selectFrame("principal");
-		selenium.waitForPageToLoad("30000");
+		
+		
+		//pega apropriação
+		Thread.sleep(5000);
 		selenium.click("link=Exportação de dados");
 		selenium.waitForPageToLoad("30000");
 		selenium.click("id=tipoApropriacao");
@@ -50,10 +53,27 @@ public class PegaApropriaJunit extends SeleneseTestCase {
 		selenium.click("id=nc_apdt_tarefa");
 		//selenium.click("id=nc_apdescricao_insumo");
 		selenium.click("id=nc_aphora_tarefa");
-		//selenium.click("id=nc_apidentificacao_projeto");
+		selenium.click("id=nc_apidentificacao_projeto");
 		selenium.click("id=nc_apobservacao");
 		selenium.click("id=nc_apempregado.matricula");
 		selenium.click("id=nc_apempregado.nome");
+		selenium.select("id=codificacao", "label=UTF8");
+		selenium.click("id=cmdConfirmar");
+		Thread.sleep(5000);
+		
+		//pega lista SM atualizada
+		selenium.click("id=tipoSM");
+		selenium.waitForPageToLoad("30000");
+		selenium.type("id=dt_Inicial", "1/7/2008");
+		selenium.select("id=codificacao", "label=UTF8");
+		selenium.click("id=nc_smassunto_sm");
+		selenium.click("id=nc_smdt_inicio_prevista");
+		selenium.click("id=nc_smdt_termino_prevista");
+		selenium.click("id=nc_smdt_termino_realizada");
+		selenium.click("id=nc_smidentificacao_projeto");
+		selenium.click("id=nc_smdescricao_estado");
+		selenium.click("id=nc_smid_sm");
+		selenium.click("id=nc_smid_pessoa_responsavel");
 		selenium.click("id=cmdConfirmar");
 		Thread.sleep(5000);
 		
@@ -64,11 +84,6 @@ public class PegaApropriaJunit extends SeleneseTestCase {
 		util.atualizaListaSM(persistidor);
 		
 	}
-	
-
-	
-	
-	
 	
 	private String recuperaDescricaoSM (String nrSm){
 		selenium.selectFrame("relative=up");

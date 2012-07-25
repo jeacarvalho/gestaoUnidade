@@ -30,10 +30,13 @@ public class UtilitarioAnaliseApropriacao {
 
 				apropriacao.setData(normalizaDataApropria(linhaEmProcessamento.substring(0, linhaEmProcessamento.indexOf(SEPARADOR_CAMPOS_ARQUIVO_APROPRIACAO))));
 				linhaEmProcessamento = linhaEmProcessamento.substring(linhaEmProcessamento.indexOf(SEPARADOR_CAMPOS_ARQUIVO_APROPRIACAO)+1,linhaEmProcessamento.length());
-				apropriacao.setHoras(calculaDiferencaEmMinutos("", linhaEmProcessamento.substring(0, linhaEmProcessamento.indexOf(SEPARADOR_CAMPOS_ARQUIVO_APROPRIACAO))));
+				apropriacao.setMinutos(calculaDiferencaEmMinutos("", linhaEmProcessamento.substring(0, linhaEmProcessamento.indexOf(SEPARADOR_CAMPOS_ARQUIVO_APROPRIACAO))));
 				linhaEmProcessamento = linhaEmProcessamento.substring(linhaEmProcessamento.indexOf(SEPARADOR_CAMPOS_ARQUIVO_APROPRIACAO)+1,linhaEmProcessamento.length());
 				apropriacao.setMatricula(linhaEmProcessamento.substring(0, linhaEmProcessamento.indexOf(SEPARADOR_CAMPOS_ARQUIVO_APROPRIACAO)));
 				linhaEmProcessamento = linhaEmProcessamento.substring(linhaEmProcessamento.indexOf(SEPARADOR_CAMPOS_ARQUIVO_APROPRIACAO)+1,linhaEmProcessamento.length());
+				apropriacao.setProjeto(linhaEmProcessamento.substring(0, linhaEmProcessamento.indexOf(SEPARADOR_CAMPOS_ARQUIVO_APROPRIACAO)));
+				linhaEmProcessamento = linhaEmProcessamento.substring(linhaEmProcessamento.indexOf(SEPARADOR_CAMPOS_ARQUIVO_APROPRIACAO)+1,linhaEmProcessamento.length());
+
 				apropriacao.setNomeEmpregado(linhaEmProcessamento.substring(0, linhaEmProcessamento.indexOf(SEPARADOR_CAMPOS_ARQUIVO_APROPRIACAO)));
 				linhaEmProcessamento = linhaEmProcessamento.substring(linhaEmProcessamento.indexOf(SEPARADOR_CAMPOS_ARQUIVO_APROPRIACAO)+1,linhaEmProcessamento.length());
 				apropriacao.setSm(trataCampoSm(linhaEmProcessamento.substring(0, linhaEmProcessamento.indexOf(SEPARADOR_CAMPOS_ARQUIVO_APROPRIACAO))));
@@ -43,6 +46,7 @@ public class UtilitarioAnaliseApropriacao {
 			}
 			
 			in.close();
+			e.delete();//apaga arquivo para na próxima execução os downloads terem o nome esperado
 			
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
@@ -59,7 +63,7 @@ public class UtilitarioAnaliseApropriacao {
 	public void atualizaListaSM(GerenciadorPersistencia persistidor){
 		String linhaEmProcessamento;
 		try {
-			File e = new File(UtilGestaoUnidade.getInstanciaUtilitario().getHome() + "/Documentos/Downloads/exportacaoSM.txt");
+			File e = new File(UtilGestaoUnidade.getInstanciaUtilitario().getHome() + "/Documentos/Downloads/exportacao(1).txt");
 			BufferedReader in = new BufferedReader(new FileReader(e));
 			in.readLine(); //despreza primeira linha com cabeçalho, sempre gerado pelo SGI
 
@@ -80,10 +84,10 @@ public class UtilitarioAnaliseApropriacao {
 				SM.setDataFimRealizadaSM(linhaEmProcessamento.substring(0, linhaEmProcessamento.indexOf(SEPARADOR_CAMPOS_ARQUIVO_APROPRIACAO)));
 				linhaEmProcessamento = linhaEmProcessamento.substring(linhaEmProcessamento.indexOf(SEPARADOR_CAMPOS_ARQUIVO_APROPRIACAO)+1,linhaEmProcessamento.length());
 
-				SM.setProjetoSM(linhaEmProcessamento.substring(0, linhaEmProcessamento.indexOf(SEPARADOR_CAMPOS_ARQUIVO_APROPRIACAO)));
+				SM.setEstadoSM(linhaEmProcessamento.substring(0, linhaEmProcessamento.indexOf(SEPARADOR_CAMPOS_ARQUIVO_APROPRIACAO)));
 				linhaEmProcessamento = linhaEmProcessamento.substring(linhaEmProcessamento.indexOf(SEPARADOR_CAMPOS_ARQUIVO_APROPRIACAO)+1,linhaEmProcessamento.length());
 
-				SM.setEstadoSM(linhaEmProcessamento.substring(0, linhaEmProcessamento.indexOf(SEPARADOR_CAMPOS_ARQUIVO_APROPRIACAO)));
+				SM.setProjetoSM(linhaEmProcessamento.substring(0, linhaEmProcessamento.indexOf(SEPARADOR_CAMPOS_ARQUIVO_APROPRIACAO)));
 				linhaEmProcessamento = linhaEmProcessamento.substring(linhaEmProcessamento.indexOf(SEPARADOR_CAMPOS_ARQUIVO_APROPRIACAO)+1,linhaEmProcessamento.length());
 
 				SM.setNumeroSM(linhaEmProcessamento.substring(0, linhaEmProcessamento.indexOf(SEPARADOR_CAMPOS_ARQUIVO_APROPRIACAO)));
@@ -109,6 +113,7 @@ public class UtilitarioAnaliseApropriacao {
 			}
 			
 			in.close();
+			e.delete();//apaga arquivo para na próxima execução os downloads terem o nome esperado
 			
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();

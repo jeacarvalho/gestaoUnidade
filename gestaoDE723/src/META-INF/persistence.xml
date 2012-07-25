@@ -14,7 +14,7 @@
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.gjt.mm.mysql.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/log" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/gestao_de7cc" />
             <property name="javax.persistence.jdbc.user" value="root" />
             <property name="javax.persistence.jdbc.password" value="tvevdd" />
 
